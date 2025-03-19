@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User, Calendar, FileText, Bell, MessageSquare, History, Settings, LogOut, Edit, MapPin, Mail, Phone, Clock, ChevronRight } from 'lucide-react';
@@ -10,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 
+// بيانات المستخدم (للعرض فقط، في تطبيق حقيقي ستكون من قاعدة البيانات)
 const userData = {
   name: "أحمد محمد",
   email: "ahmad@example.com",
@@ -23,6 +25,7 @@ const userData = {
   profileCompletion: 75
 };
 
+// بيانات العائلة (للعرض فقط)
 const familyData = [
   {
     id: 1,
@@ -34,6 +37,7 @@ const familyData = [
   }
 ];
 
+// بيانات الخدمات النشطة (للعرض فقط)
 const activeServices = [
   {
     id: 1,
@@ -53,6 +57,7 @@ const activeServices = [
   }
 ];
 
+// بيانات التقارير (للعرض فقط)
 const reports = [
   {
     id: 1,
@@ -70,6 +75,7 @@ const reports = [
   }
 ];
 
+// بيانات الإشعارات (للعرض فقط)
 const notifications = [
   {
     id: 1,
@@ -120,6 +126,7 @@ const Profile = () => {
     <div className="font-sans" style={{ direction: 'rtl' }}>
       <Navbar />
       
+      {/* Profile Header */}
       <div className="bg-gradient-to-b from-primary/90 to-primary py-12 text-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -173,6 +180,7 @@ const Profile = () => {
         </div>
       </div>
       
+      {/* Profile Completion */}
       <div className="container mx-auto px-4 py-6 bg-white shadow-sm -mt-6 rounded-t-xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex-1">
@@ -189,6 +197,7 @@ const Profile = () => {
         </div>
       </div>
       
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <Tabs defaultValue="dashboard">
           <div className="border-b mb-8">
@@ -219,13 +228,13 @@ const Profile = () => {
             </TabsList>
           </div>
           
+          {/* Dashboard */}
           <TabsContent value="dashboard">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <DashboardCard 
                 title="نظرة عامة" 
                 icon={<User className="h-6 w-6 text-primary" />} 
                 link="/profile/overview"
-                badge=""
               >
                 <p className="text-gray-600 mb-4">{userData.bio || "لم يتم إضافة نبذة عنك بعد."}</p>
                 <div className="flex items-center text-sm text-gray-500">
@@ -290,7 +299,6 @@ const Profile = () => {
                 title="المواعيد القادمة" 
                 icon={<Calendar className="h-6 w-6 text-purple-600" />} 
                 link="/profile/appointments"
-                badge=""
               >
                 {activeServices.length > 0 ? (
                   <div className="space-y-3">
@@ -357,6 +365,7 @@ const Profile = () => {
             </div>
           </TabsContent>
           
+          {/* Family */}
           <TabsContent value="family">
             <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
               <div className="flex justify-between items-center mb-6">
@@ -430,6 +439,7 @@ const Profile = () => {
             </div>
           </TabsContent>
           
+          {/* Services */}
           <TabsContent value="services">
             <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
               <div className="flex justify-between items-center mb-6">
@@ -516,6 +526,7 @@ const Profile = () => {
             </div>
           </TabsContent>
           
+          {/* Reports */}
           <TabsContent value="reports">
             <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
               <div className="flex justify-between items-center mb-6">
@@ -552,6 +563,7 @@ const Profile = () => {
             </div>
           </TabsContent>
           
+          {/* Notifications */}
           <TabsContent value="notifications">
             <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
               <div className="flex justify-between items-center mb-6">

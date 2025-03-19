@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Heart, Brain, Stethoscope, School, Users, FileText, ArrowRight } from 'lucide-react';
 
-export const servicesData = [
+const servicesData = [
   {
     id: 1,
     title: 'الخدمات التعليمية',
