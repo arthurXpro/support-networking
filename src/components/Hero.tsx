@@ -38,7 +38,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1593912819704-14d89896283c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" 
                   alt="مساعدة ذوي الاحتياجات الخاصة" 
                   className="w-full object-cover h-[400px]"
                 />
