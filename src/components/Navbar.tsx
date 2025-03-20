@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, User, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,14 +35,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            className="text-2xl font-bold text-primary flex items-center gap-2"
-          >
-            <span className="relative z-10 after:absolute after:w-full after:h-full after:bg-secondary after:top-2 after:left-2 after:-z-10 after:rounded-md">
-              RaasiCare
-            </span>
-          </Link>
+          {/* Replace the old logo with our new Logo component */}
+          <Logo size="medium" withText={true} />
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
