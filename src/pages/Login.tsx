@@ -1,18 +1,20 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, LogIn } from 'lucide-react';
+import { Eye, EyeOff, LogIn, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import Logo from '@/components/Logo';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [documents, setDocuments] = useState<File[]>([]);
   const navigate = useNavigate();
   const { toast } = useToast();
   
@@ -36,10 +38,25 @@ const Login = () => {
       setIsLoading(false);
       toast({
         title: "تم تسجيل الدخول بنجاح",
-        description: "مرحباً بك في منصة ذوي الاحتياجات الخاصة",
+        description: "مرحباً بك في منصة تمكين",
       });
       navigate('/profile');
     }, 1500);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files);
+      setDocuments(filesArray);
+      
+      // إظهار رسالة تأكيد تحميل الوثائق
+      if (filesArray.length > 0) {
+        toast({
+          title: "تم رفع الوثائق",
+          description: `تم رفع ${filesArray.length} ملف/ملفات بنجاح`,
+        });
+      }
+    }
   };
   
   return (
@@ -47,8 +64,8 @@ const Login = () => {
       <div className="w-full max-w-md">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <div className="text-center mb-8">
-            <Link to="/">
-              <h2 className="text-3xl font-bold text-primary">منصة مساعدة</h2>
+            <Link to="/" className="inline-block">
+              <Logo size="large" withText={true} />
             </Link>
             <p className="text-gray-600 mt-2">تسجيل الدخول إلى حسابك</p>
           </div>
@@ -89,6 +106,27 @@ const Login = () => {
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="documents">وثائق التوثيق (اختياري)</Label>
+                <div className="flex items-center">
+                  <Label
+                    htmlFor="documents"
+                    className="flex items-center gap-2 py-2 px-4 border border-dashed border-primary rounded-md w-full cursor-pointer hover:bg-gray-50 transition-colors"
+                  >
+                    <Upload size={18} className="text-primary" />
+                    <span>{documents.length > 0 ? `${documents.length} ملف/ملفات محددة` : "اضغط لتحميل الوثائق"}</span>
+                  </Label>
+                  <Input
+                    id="documents"
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                </div>
+                <p className="text-xs text-gray-500">يمكنك رفع بطاقة الهوية، جواز السفر، أو أي وثائق تثبت هويتك</p>
               </div>
               
               <div className="flex items-center space-x-2 space-x-reverse">

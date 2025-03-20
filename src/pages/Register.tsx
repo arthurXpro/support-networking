@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
+import Logo from '@/components/Logo';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -42,7 +43,7 @@ const Register = () => {
       setIsLoading(false);
       toast({
         title: "تم إنشاء الحساب بنجاح",
-        description: "مرحباً بك في منصة ذوي الاحتياجات الخاصة",
+        description: "مرحباً بك في منصة تمكين",
       });
       navigate('/login');
     }, 1500);
@@ -102,8 +103,8 @@ const Register = () => {
       <div className="w-full max-w-xl">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <div className="text-center mb-8">
-            <Link to="/">
-              <h2 className="text-3xl font-bold text-primary">منصة مساعدة</h2>
+            <Link to="/" className="inline-block">
+              <Logo size="large" withText={true} />
             </Link>
             <p className="text-gray-600 mt-2">إنشاء حساب جديد</p>
           </div>
@@ -148,7 +149,7 @@ const Register = () => {
                     <Label htmlFor="phone-individual">رقم الجوال</Label>
                     <Input
                       id="phone-individual"
-                      placeholder="05xxxxxxxx"
+                      placeholder="09xxxxxxxx"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
@@ -166,14 +167,6 @@ const Register = () => {
                       <div className="flex items-center space-x-2 space-x-reverse">
                         <RadioGroupItem value="guardian" id="guardian" />
                         <Label htmlFor="guardian" className="font-normal">ولي أمر</Label>
-                      </div>
-                      <div className="flex items-center space-x-2 space-x-reverse">
-                        <RadioGroupItem value="volunteer" id="volunteer" />
-                        <Label htmlFor="volunteer" className="font-normal">متطوع</Label>
-                      </div>
-                      <div className="flex items-center space-x-2 space-x-reverse">
-                        <RadioGroupItem value="donor" id="donor" />
-                        <Label htmlFor="donor" className="font-normal">متبرع</Label>
                       </div>
                     </div>
                   </RadioGroup>
@@ -250,7 +243,7 @@ const Register = () => {
                     <Label htmlFor="phone-org">رقم التواصل</Label>
                     <Input
                       id="phone-org"
-                      placeholder="0xxxxxxxxx"
+                      placeholder="09xxxxxxxx"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />

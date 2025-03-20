@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User, MessageCircle } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
 
@@ -35,7 +35,6 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Replace the old logo with our new Logo component */}
           <Logo size="medium" withText={true} />
 
           {/* Desktop Menu */}
@@ -58,6 +57,9 @@ const Navbar = () => {
             <Link to="/contact" className="nav-link">
               اتصل بنا
             </Link>
+            <Link to="/donate" className="nav-link text-primary font-medium">
+              تبرع الآن
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -67,13 +69,6 @@ const Navbar = () => {
             >
               <User size={18} />
               <span>تسجيل الدخول</span>
-            </Link>
-            <Link
-              to="/chat"
-              className="flex items-center gap-2 py-2 px-4 rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300"
-            >
-              <MessageCircle size={18} />
-              <span>محادثة مباشرة</span>
             </Link>
           </div>
 
@@ -132,6 +127,13 @@ const Navbar = () => {
               >
                 اتصل بنا
               </Link>
+              <Link
+                to="/donate"
+                className="py-2 text-primary font-medium hover:text-accent transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                تبرع الآن
+              </Link>
               <div className="flex flex-col space-y-2 pt-2 border-t">
                 <Link
                   to="/login"
@@ -140,14 +142,6 @@ const Navbar = () => {
                 >
                   <User size={18} />
                   <span>تسجيل الدخول</span>
-                </Link>
-                <Link
-                  to="/chat"
-                  className="flex items-center gap-2 py-2 px-4 rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300 justify-center"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <MessageCircle size={18} />
-                  <span>محادثة مباشرة</span>
                 </Link>
               </div>
             </div>
