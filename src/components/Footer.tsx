@@ -11,6 +11,7 @@ import {
   Mail,
   ChevronRight
 } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
@@ -18,9 +19,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="space-y-4">
-            <Link to="/" className="text-2xl font-bold flex items-center gap-2">
-              <span className="text-primary">Raasi</span>Care
-            </Link>
+            <Logo size="medium" withText={true} />
             <p className="text-gray-400 mt-4">
               منصة إلكترونية شاملة لربط ذوي الاحتياجات الخاصة بالخدمات المتخصصة التي يحتاجونها بطريقة سهلة وموثوقة.
             </p>
@@ -134,7 +133,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={20} className="text-primary mt-1" />
-                <span className="text-gray-400">info@raasicare.com</span>
+                <span className="text-gray-400">info@tamkeen.sa</span>
               </li>
             </ul>
             
@@ -157,7 +156,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-6 mt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} RaasiCare. جميع الحقوق محفوظة.
+              © {new Date().getFullYear()} تمكين. جميع الحقوق محفوظة.
             </p>
             <div className="flex items-center gap-4">
               <Link to="/privacy" className="text-gray-500 text-sm hover:text-primary transition-colors">
